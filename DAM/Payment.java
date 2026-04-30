@@ -1,26 +1,40 @@
-import java.util.Scanner;
-
 import java.util.List;
 
 public class Payment{
-  private static int nextPaymentID = 1;
-  private int PaymentID;
-  private double TotalPrice;
-  
-  public Payment(){
-    this.PaymentID = this.nextPaymentID;
-    nextPaymentID ++;
-    this.TotalPrice = 0;
+  private String paymentID;
+  private Order order;
+  private double totalPrice;
+    
+  public Payment(Order order){
+    this.paymentID = order.getOrderID();
+    this.order = order;
+    this.totalPrice = 0;
   }
-  public int getPaymentID(){
-    return this.PaymentID;
+
+  public String getPaymentID(){
+    return this.paymentID;
   }
+
   public double getTotalPrice(){
-    return this.TotalPrice;
+    return this.totalPrice;
   }
-  public void setPaymentID(int PaymentID) {
-    this.PaymentID = PaymentID;
+
+  public Order getOrder(){
+    return this.order;
   }
+
+  public void setPaymentID(String paymentID) {
+    this.paymentID = paymentID;
+  }
+
+  public void setOrder(Order order) {
+    this.order = order;
+  }
+
+  public void setTotalPrice(double totalPrice) {
+    this.totalPrice = totalPrice;
+  }
+
   public void calcTotal(Order order){
     List<Item> list = order.getItemList();  //expect getitemList on Order
     double sum = 0;
@@ -28,20 +42,30 @@ public class Payment{
     for (Item currentItem : list){
         sum += currentItem.getItemPrice();  // count the sum without discount based on list item 
     }
-        this.TotalPrice = sum;
-    deductVoucher(order);
+        this.totalPrice = sum;
+        deductVoucher(order);
   }
 
   public void deductVoucher(Order order){ // fixed 10% discount if have voucher 
     if (order.getIsDiscounted()){
-        this.TotalPrice = this.TotalPrice - (this.TotalPrice*0.1);
+        this.totalPrice = this.totalPrice * 0.9;
     }
-
   }
 
-  public void transferToSeller(int sellerID,int PaymentID){ // what to transferToSeller
-    System.out.println("The PaymentID : " + PaymentID);
-    System.out.println("The Seller ID : " + sellerID);
-    System.out.println("Amount Paid : RM " + this.TotalPrice);
-  }
+   public double pay(double balance){
+      calcTotal(this.order);
+      if (balance >= this.totalPrice){
+        balance -= this.totalPrice;
+        System.out.printf("The total price is RM %.2f\n", this.totalPrice);
+        System.out.printf("The balance is RM%.2f\n", balance);
+        System.out.println("Payment success!");
+        return balance;
+      }else{
+        System.out.printf("The total price is RM %.2f\n", this.totalPrice);
+        System.out.printf("The balance is RM%.2f\n", balance);
+        System.out.println("Payment failed!");
+      }
+
+      return balance;
+    }
 }
