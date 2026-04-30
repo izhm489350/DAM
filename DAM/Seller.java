@@ -11,14 +11,12 @@ private List <Item> itemList = new ArrayList<>();
     {
         super();
         this.sellerRating = 0;
-        setStudentType("seller");
     }
 
     public Seller(String name, int matricNumber, int age, String sex, String address, float balance)
     {
         super(name, matricNumber, age, sex, address, balance);
         this.sellerRating = 0;
-        setStudentType("seller");
     }
     
     public int getSellerRating()
@@ -26,9 +24,9 @@ private List <Item> itemList = new ArrayList<>();
         return this.sellerRating;
     }
     
-    public void setSellerRating(int Rating)
+    public void setSellerRating(int rating)
     {
-        this.sellerRating = Rating;
+        this.sellerRating += rating;
     }
 
     public List <Item> getItemList()
@@ -54,7 +52,7 @@ private List <Item> itemList = new ArrayList<>();
         
         this.itemList.add(new Item(itemName, itemDesc, itemPrice, this.getName()));
 
-        System.out.println("Item added successfully\n");
+        System.out.println("Item added successfully!");
     }
     
     public void removeItem(Scanner input)
@@ -69,10 +67,10 @@ private List <Item> itemList = new ArrayList<>();
             if(item.getItemName().equalsIgnoreCase(itemName))
             {
                 this.itemList.remove(item);
-                System.out.println("Item removed successfully\n");
+                System.out.println("Item removed successfully!");
                 return;
             }else{
-                System.out.println("Item not found\n");
+                System.out.println("Item not found!");
             }
         }
     }
@@ -80,14 +78,18 @@ private List <Item> itemList = new ArrayList<>();
     public void checkInventory(){
         if (!this.itemList.isEmpty()){
             for (Item item : itemList){
+                System.out.println();
                 System.out.println("Item Name: " + item.getItemName());
                 System.out.println("Item Description: " + item.getItemDesc());
-                System.out.println("Item Price: RM" + item.getItemPrice());
-                System.out.println();
+                System.out.printf("Item Price: RM%.2f\n", item.getItemPrice());
             }
         }else{
             System.out.println("Inventory is empty!");
         }
+    }
+
+    public void checkRating(){
+        System.out.println("Your recent rating is: " + this.sellerRating + " stars!");
     }
 
     public static void showSellerMenu(Seller seller){
