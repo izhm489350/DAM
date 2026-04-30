@@ -59,6 +59,12 @@ private List <Item> itemList = new ArrayList<>();
     {
         input.nextLine();
 
+        if(this.itemList.isEmpty())
+        {
+            System.out.println("Inventory is empty!");
+            return;
+        }
+
         System.out.print("Enter item name: ");
         String itemName = input.nextLine();
         
@@ -100,7 +106,8 @@ private List <Item> itemList = new ArrayList<>();
         System.out.println("2. Remove from inventory");
         System.out.println("3. Check inventory");
         System.out.println("4. Check your rating");
-        System.out.println("5. Exit");
+        System.out.println("5. Show profile");
+        System.out.println("6. Exit");
         System.out.println();
     }
 }
