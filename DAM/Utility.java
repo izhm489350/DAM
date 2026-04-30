@@ -80,7 +80,7 @@ public class Utility {
                     break;
                 case 6:
                     System.out.println("\n" + buyer.toString());
-                    System.out.println(buyer.getVoucherQty());
+                    System.out.println("Voucher Quantity: " + buyer.getVoucherQty());
                     break;
                 case 7:
                     break;
