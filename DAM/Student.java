@@ -5,7 +5,6 @@ public class Student{
     private String sex;
     private String address;
     private double balance;
-    private String studentType;
     
     public Student() {
         this.name = "no name";
@@ -14,17 +13,15 @@ public class Student{
         this.sex = "no sex";
         this.address = "no address";
         this.balance = 0;
-        this.studentType = "no type";
     }
 
-    public Student(String name, int matricNumber, int age, String sex, String address, float balance) {
+    public Student(String name, int matricNumber, int age, String sex, String address, double balance) {
         this.name = name;
         this.matricNumber = matricNumber;
         this.age = age;
         this.sex = sex;
         this.address = address;
         this.balance = balance;
-        this.studentType = "no type";
     }
 
     public String getName() {
@@ -71,23 +68,15 @@ public class Student{
         return this.balance;
     }
 
-    public void setBalance(float balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
-    }
-
-    public String getStudentType() {
-        return this.studentType;
-    }
-
-    public void setStudentType(String studentType) {
-        this.studentType = studentType;
     }
 
     public String toString() {
         return "Name: " + this.name + "\nMatric Number: " 
                 + this.matricNumber + "\nAge: " + this.age 
                 + "\nSex: " + this.sex + "\nAddress: " 
-                + this.address + "\nBalance: RM" + this.balance + "\n";
+                + this.address + "\nBalance: RM" + this.balance;
     }
 }
 
