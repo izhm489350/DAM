@@ -1,8 +1,9 @@
+import java.util.List;
 import java.util.ArrayList;
 
 public class Order {
     private String orderID;
-    private ArrayList <Item> itemList;
+    private List <Item> itemList;
     private boolean isDiscounted;
     
     public Order(String orderID) {
@@ -19,11 +20,11 @@ public class Order {
         this.orderID = orderID;
     }
     
-    public ArrayList <Item> getItemList() {
+    public List <Item> getItemList() {
         return itemList;
     }
     
-    public void setItemList(ArrayList <Item> itemList) {
+    public void setItemList(List <Item> itemList) {
         this.itemList = itemList;
     }
     
