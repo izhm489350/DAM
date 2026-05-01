@@ -139,14 +139,8 @@ public class Buyer extends Student{
 
         Payment buyerPayment = new Payment(buyerOrder);
         setBalance(buyerPayment.pay(getBalance()));
-        
-        for (Item item : cart){
-            for (Seller seller : sellerList){
-                if (seller.getName().equalsIgnoreCase(item.getSellerName())){
-                    seller.setBalance(seller.getBalance() + item.getItemPrice());
-                }
-            }
-        }
+
+        buyerPayment.transferPaymentToSeller(cart, sellerList);
 
         this.cart.clear();
     }
