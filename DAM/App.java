@@ -16,6 +16,8 @@ public class App {
 
         studentList.add(new Seller ("Aqilah", 2516667, 20, "F", "Jalan 2", 100));
 
+        studentList.add(new Seller ("Muhd", 2516767, 20, "M", "Jalan 3", 100));
+
         Utility.studentSorter(studentList, buyerList, sellerList);
         
         int mainChoice = 0;
@@ -47,6 +49,8 @@ public class App {
             }
         }while (mainChoice != 2);
         
-    }    
-    
+    }       
 }
+
+// Name: Ariff Izham
+// Matric Number: 2516463
