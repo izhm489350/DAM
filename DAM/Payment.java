@@ -68,4 +68,17 @@ public class Payment{
 
       return balance;
     }
+
+    public void transferPaymentToSeller (List <Item> cart, List <Seller> sellerList) {
+        for (Item item : cart){
+            for (Seller seller : sellerList){
+                if (seller.getName().equalsIgnoreCase(item.getSellerName())){
+                    seller.setBalance(seller.getBalance() + item.getItemPrice());
+                }
+            }
+        }
+    }
 }
+
+// Name: Adam Hafiz
+// Matric Number: 2516767
